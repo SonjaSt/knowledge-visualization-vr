@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Graph : MonoBehaviour {
+public class Graph {
 
     //use lists for easier comprehension in the implementation of the Fruchterman-Reingold algorithm
     private List<Node> nodes;
@@ -16,6 +16,16 @@ public class Graph : MonoBehaviour {
 
     public List<Node> getNodes() { return nodes; }
     public List<Edge> getEdges() { return edges; }
+
+    public void addNode(Node node)
+    {
+        nodes.Add(node);
+    }
+
+    public void addEdge(Edge edge)
+    {
+        edges.Add(edge);
+    }
     public class Node
     {
         private Information information;
@@ -62,6 +72,13 @@ public class Graph : MonoBehaviour {
             displacement.x = x;
             displacement.y = y;
             displacement.z = z;
+        }
+
+        public void addDisplacement(float x, float y, float z)
+        {
+            displacement.x += x;
+            displacement.y += y;
+            displacement.z += z;
         }
 
         /**
