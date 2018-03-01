@@ -142,7 +142,7 @@ public class GraphVisualizer : MonoBehaviour {
 
     public float cool(float t)
     {
-        return t - DEFAULT_STEP;
+        return t - DEFAULT_STEP > 0 ? t - DEFAULT_STEP : 0;
     }
 
     float temperature;
