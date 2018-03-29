@@ -6,6 +6,8 @@ public class GraphVisualizer : MonoBehaviour {
     WebHandler communicator;
     bool printed = false;
 
+    bool waiting = false;
+
     //this is the model for the ball
     public GameObject ball;
 
@@ -26,6 +28,8 @@ public class GraphVisualizer : MonoBehaviour {
 
     //this extracts the body of a wikipedia article in an easy to parse style
     string message = "https://de.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&explaintext=&titles=";
+    //this string gets the title of a random wikipedia page
+    string random = "https://de.wikipedia.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&rnlimit=1";
 
     public struct Boundaries
     {
@@ -52,6 +56,8 @@ public class GraphVisualizer : MonoBehaviour {
          */
         temperature = 5.0f;
         makeStar();
+
+        communicator = gameObject.AddComponent<WebHandler>();
     }
 
     public void makeStar()
@@ -89,6 +95,8 @@ public class GraphVisualizer : MonoBehaviour {
             printed = true;
         }
         */
+
+        
         time += Time.deltaTime;
         if (time > 0.05f && counter <10000)
         {
@@ -101,6 +109,17 @@ public class GraphVisualizer : MonoBehaviour {
             drawn = drawGraph();
             counter++;
             time = 0;
+        }
+        
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            waiting = true;
+            StartCoroutine(communicator.requestRandomArticle());
+        }
+        if (waiting)
+        {
+            if (communicator.isFinished()) { Debug.Log("Finished fetching random article: " + communicator.getContent()); waiting = false; }
         }
     }
 
@@ -271,35 +290,55 @@ public class GraphVisualizer : MonoBehaviour {
     public List<GameObject> drawGraph()
     {
         //draw nodes
-        List<GameObject> drawnNodes = new List<GameObject>();
+        List<GameObject> drawnComponents = new List<GameObject>();
         List<GameObject> lines = new List<GameObject>();
         List<Graph.Node> nodes = graph.getNodes();
         List<Graph.Edge> edges = graph.getEdges();
         foreach (Graph.Node currentNode in nodes)
         {
             GameObject newBall = Instantiate(ball, new Vector3(currentNode.getX(), currentNode.getY(), currentNode.getZ()), Quaternion.identity);
-            drawnNodes.Add(newBall);
+            drawnComponents.Add(newBall);
         }
-        /*
+        
         foreach (Graph.Edge currentEdge in edges)
         {
             //maybe use GL.LINES instead...?
             GameObject lineObject = new GameObject();
             lineObject.AddComponent<LineRenderer>();
             LineRenderer line = lineObject.GetComponent<LineRenderer>();
-            //add more stuff?
+            line.SetPosition(0, new Vector3(currentEdge.getFrom().getX(), currentEdge.getFrom().getY(), currentEdge.getFrom().getZ()));
+            line.SetPosition(0, new Vector3(currentEdge.getTo().getX(), currentEdge.getTo().getY(), currentEdge.getTo().getZ()));
+            
+            line.SetWidth(0.01f, 0.01f);
+            drawnComponents.Add(lineObject);
         }
-        */
+        
 
-        return drawnNodes;
+        return drawnComponents;
+    }
+
+    public void getGraph(string startingNode, int hops)
+    {
+        for (int i = 0; i < hops; i++)
+        {
+            StartCoroutine(communicator.requestNeighbors(startingNode));
+            while (!communicator.isFinished())
+            {
+                //wait, the program cannot do anything while waiting for answers anyway.
+                // -> maybe change this later to stop after 5 seconds
+            }
+            //continue
+            //add startingNode to list
+            //add all Neighbors to list
+        }
     }
 
     //to use this, first get a list of usable neighbors
     //this implementation uses a different approach, check paper to see differences
     //volume is calculated as volume = w*l*h / |nodes|
     //optimalDistance is calculated as optimaleDistance = Mathf.pow(volume, (1.0/3.0))
-    public void FruchtermanReingoldGridBased()
+    /*public void FruchtermanReingoldGridBased()
     {
 
-    }
+    }*/
 }
