@@ -152,15 +152,36 @@ public class Graph {
         //use this class to save information from Wikipedia
         //this is ONLY used for information from Wikipedia!!
         private string name;
+        private int pageviews;
+        private List<string> paragraphs; //this represents the paragraphs of an article
+        //private List<> pictures;
+        //private List<> videos;
+        //private List<> audio;
 
         public Information()
         {
             name = "NONAME";
         }
 
+        public Information(string name)
+        {
+            this.name = name;
+        }
+
+        public Information(string name, int pageviews)
+        {
+            this.name = name;
+            this.pageviews = pageviews;
+        }
+
         public string getName()
         {
             return name;
+        }
+
+        public int getPageviews()
+        {
+            return pageviews;
         }
     }
 }

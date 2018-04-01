@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Most of the comments are for myself, so I can keep track of what I've done.
+ * Focusing is hard.
+ */
 public class GraphVisualizer : MonoBehaviour {
     WebHandler communicator;
     bool printed = false;
@@ -317,19 +321,103 @@ public class GraphVisualizer : MonoBehaviour {
         return drawnComponents;
     }
 
-    public void getGraph(string startingNode, int hops)
+    /**
+     * This method uses the title of a starting article and the amount of hops (distance from the start) to generate a graph
+     * 
+     * !!!ATTENTION: THIS METHOD NEEDS REVISION AS IT HAS NOT BEEN TESTED OR CHECKED IF IT IS COMPLETE!!!
+     */
+    IEnumerator getGraph(string startingNode, int hops)
     {
+        //Note: We identify graph nodes by string because of easier comprehension
+        //Note: Don't confuse the lists graph is taking care of with the list of strings of neighbors...
+        Graph graph = new Graph();
+        Graph.Information info = new Graph.Information(startingNode);
+        Graph.Node firstNode = new Graph.Node(info);
+        graph.addNode(firstNode); //this will keep track of ALL accumulated nodes and edges
+        
+        List<Graph.Node> nodesToCheck = new List<Graph.Node>(); //these are nodes that are found in the neighborhood
+        nodesToCheck.Add(firstNode); //this only keeps track of neighborhoods and deletes nodes that have been explored already
+
+        //NOTE: This version of BFS does currently not keep track of a "visited" list. Since we are limited by hops (which shouldn't ever go above 3 for sanity's sake), we finish searching at some point anyway
         for (int i = 0; i < hops; i++)
         {
-            StartCoroutine(communicator.requestNeighbors(startingNode));
-            while (!communicator.isFinished())
-            {
-                //wait, the program cannot do anything while waiting for answers anyway.
-                // -> maybe change this later to stop after 5 seconds
+            int currentNodesToCheck = nodesToCheck.Count;
+            //this is the number of nodes to check the neighborhoods for.
+            //All neighbors that are found will be added to "nodesToCheck" in the next loop
+            for (int j = 0; j < currentNodesToCheck; j++)
+            { 
+                //this for iterates a list of nodes that will be explored
+                //KEEP IN MIND it checks the amount of nodes beforehand and works on the first x found nodes because nodes are being added to the list while working on it
+                //i.e. the list nodesToCheck has 1 node in the beginning (starting node), so "currentNodesToCheck" is 1
+                //we now explore this node and find all neighbors and add them to the graph and to nodesToCheck
+                //after the next for loop, nodesToCheck will have a lot of new nodes
+                //when the hop is done, meaning the for loop iterating j has come to an end, delete the first currentNodesToCheck-many elements in nodesToCheck
+                yield return StartCoroutine(communicator.requestNeighbors(nodesToCheck[j]));
+                List<string> tempNeighbors = communicator.getNeighbors();
+                for (int z = 0; z < tempNeighbors.Count; z++)
+                {
+                    //this for adds all neighbors of a node that is currently being explored to the list of nodes to be explored and the graph
+                    Graph.Information neighborInfo = new Graph.Information(tempNeighbors[z]);
+                    Graph.Node nextNode = new Graph.Node(neighborInfo);
+                    Graph.Edge nextedge = new Graph.Edge(nodesToCheck[j], nextNode);
+                    if (!graph.getNodes().Exists(node => node.getName().Equals(tempNeighbors[z])))
+                    {
+                        graph.addNode(nextNode); //add neighbor to graph if not already in graph
+                    }
+                    if (!graph.getEdges().Exists(edge => edge.getFrom().getName().Equals(nodesToCheck[j]) && edge.getTo().getName().Equals(tempNeighbors[z]))) //I don't want to talk about this
+                    {
+                        //above if should check if edge is already in list
+
+                        /**
+                        int oppositeEdge = graph.getEdges().FindIndex(edge => edge.getFrom().getName().Equals(tempNeighbors[z]) && edge.getTo().getName().Equals(nodesToCheck[j]));
+                        if (oppositeEdge >= 0)
+                        {
+                            //check if the edge exists in the opposite direction (try to find an edge where FROM is the neighbor that is looked at and TO is the node that is being explored)
+                            graph.getEdges()[oppositeEdge]...
+                        }
+                        
+                        IMPORTANT NOTE: THE ABOVE STEP IS NECESSARY WHEN AN EDGE IS SAVED WITH A FLAG THAT INDICATES IT GOES IN BOTH DIRECTIONS
+                        AN EDGE IS CURRENTLY MODELED SO THAT EDGES BETWEEN TWO NODES CAN BE ADDED TWICE IF THEY ARE OPPOSITES
+                        I only realised I could've left this out after I almost finished it.
+                        */
+                        graph.addEdge(nextedge); //add edge to graph if not already in graph
+                    }
+                    nodesToCheck.Add(nextNode); //this adds the currently looked at node to the list of nodes to explore
+                }
             }
-            //continue
-            //add startingNode to list
-            //add all Neighbors to list
+            nodesToCheck.RemoveRange(0, currentNodesToCheck); //see comment at start of for loop iterating j for more information on why this is necessary
+        }
+        this.graph = graph;
+    }
+
+
+    //This method downsizes a graph to a given number of maximum nodes
+    //The metric used is the number of pageviews an article has (relates to interest)
+    //To make things easier, when passing Information to the graph, add a number of pageviews to the Information
+
+    //This method works in-place on the graph saved in this class
+    public void downsizeGraph(int maxNodes)
+    {
+        if (graph.getNodes().Count <= maxNodes) { return; }
+        else
+        {
+            //the order of nodes is not important to the algorithms we use
+            //therefore we take the easy way out and sort our node-list in-place by pageviews
+            //make sure to not forget edges
+
+            graph.getNodes().Sort((x, y) => x.getInformation().getPageviews().CompareTo(y.getInformation().getPageviews()));
+            //What now?
+            //Go through first x many Elements to delete every node that isn't relevant enough and also corresponding edges
+            //x here is graph.getNodes().Count - maxNodes
+            int numberToErase = graph.getNodes().Count - maxNodes;
+            for (int i = 0; i < numberToErase; i++)
+            {
+                string currentName = graph.getNodes()[0].getName(); //we are always looking at the first Index, 0
+                graph.getEdges().RemoveAll(x => x.getFrom().getName().Equals(currentName) || x.getTo().getName().Equals(currentName)); //delete all edges with 0 involved
+                graph.getNodes().RemoveAt(0); //finally remove the node itself, the next node (1) now becomes 0 and is being looked at.
+            }
+            //after finishing this loop, all unnecessary nodes and edges will be gone
+            //hopefully.
         }
     }
 

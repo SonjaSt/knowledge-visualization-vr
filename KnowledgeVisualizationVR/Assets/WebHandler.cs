@@ -10,8 +10,9 @@ public class WebHandler : MonoBehaviour{
     string content = "";
     List<string> neighbors = null;
     bool finished = true;
-    string message = "https://de.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&explaintext=&titles=";
+    string message = "https://de.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&explaintext=&titles="; //this needs +title
     string random = "https://de.wikipedia.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&rnlimit=1";
+    string allLinks = "https://en.wikipedia.org/w/api.php?action=query&prop=links&plnamespace=0&pllimit=max&titles="; //this needs +title
     public IEnumerator requestContent(string apiRequest)
     {
         finished = false;
@@ -28,6 +29,7 @@ public class WebHandler : MonoBehaviour{
     }
 
     //This method puts the name of a random article in "content"
+    //This method works. DO NOT CHANGE UNLESS YOU ARE ABSOLUTELY CERTAIN YOU NEED TO.
     public IEnumerator requestRandomArticle()
     {
         finished = false;
@@ -47,14 +49,22 @@ public class WebHandler : MonoBehaviour{
     }
 
     //WIP
-    /*public IEnumerator requestNeighbors(string title)
+    public IEnumerator requestNeighbors(string title)
     {
         finished = false;
         neighbors = new List<string>();
-        yield return StartCoroutine(requestContent());
+        yield return StartCoroutine(requestContent(allLinks));
+        //this "ONLY" returns first 500 elements. usually this is enough, however some articles have more than 500 links.
+        //check if the request has to be continued (see WikiMedia API on continue)
+        //this is the case if there is a plcontinue in the json result or a continue or there is no "batchcomplete".
+        //parse list to fit needs
+        //split along "links". everything that follows are links on a given page, preceded by "title"
         neighbors = list;
-    }*/
+        finished = true;
+    }
 
+    //This method takes whatever is in "content" and sections it
+    //ATTENTION: content needs to be the content of an actual wikipedia article for this to make sense!
     public string[] getSectionedContent()
     {
         //\\n\\n is necessary for this to work. Check for the beginning of the JSON file and get rid of it.
@@ -71,5 +81,9 @@ public class WebHandler : MonoBehaviour{
     public string getContent()
     {
         return content;
+    }
+    public List<string> getNeighbors()
+    {
+        return neighbors;
     }
 }
