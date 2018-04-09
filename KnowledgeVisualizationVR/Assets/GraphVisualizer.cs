@@ -7,8 +7,18 @@ using UnityEngine;
  * Focusing is hard.
  */
 public class GraphVisualizer : MonoBehaviour {
+    List<GameObject> drawnEdges;
+    List<GameObject> drawnNodes;
+
+    //the graph container allows for easier manipulation of the drawn graph
+    public GameObject graphContainer;
+
+    int measuringTime = 0;
+
     WebHandler communicator;
     bool printed = false;
+    bool isAcquiringGraph = true;
+    bool oneAndDone = true;
 
     bool waiting = false;
 
@@ -22,7 +32,9 @@ public class GraphVisualizer : MonoBehaviour {
     public float DEFAULT_VOLUME = 1000000.0f; //IMPORTANT: WHEN VALUES FOUND, SET THIS TO DEFAULT VOLUME
     public float DEFAULT_CUBE_ROOT = 100.0f; //IMPORTANT: WHEN VALUES FOUND, SET THIS TO DEFAULT CUBE ROOT
 
-    public float DEFAULT_STEP = 0.10f;
+    float temperature;
+
+    public float DEFAULT_STEP = 3.0f;
     public int NUMBER_OF_ITERATIONS = 50;
 
     private Graph graph;
@@ -44,6 +56,7 @@ public class GraphVisualizer : MonoBehaviour {
 
     public void Start()
     {
+        communicator = gameObject.AddComponent<WebHandler>(); //this is always necessary
         /*
         communicator = new WebHandler();
         //The string "Graphentheorie" is merely a teststring
@@ -58,12 +71,20 @@ public class GraphVisualizer : MonoBehaviour {
 
         /* This is for testing
          */
+
+        /*
         temperature = 5.0f;
         makeStar();
+        */
 
-        communicator = gameObject.AddComponent<WebHandler>();
+        //measuringTime = System.Environment.TickCount;
+
+        temperature = 10.0f;
+        StartCoroutine(getGraph("Roger_Waters", 1));
+        
     }
 
+    /*
     public void makeStar()
     {
         Graph newGraph = new Graph();
@@ -82,10 +103,8 @@ public class GraphVisualizer : MonoBehaviour {
 
         setGraph(newGraph);
     }
-
-    float time = 0;
-    int counter = 0;
-    List<GameObject> drawn;
+    */
+    
     public void Update()
     {
         /*
@@ -100,7 +119,7 @@ public class GraphVisualizer : MonoBehaviour {
         }
         */
 
-        
+        /*
         time += Time.deltaTime;
         if (time > 0.05f && counter <10000)
         {
@@ -114,8 +133,9 @@ public class GraphVisualizer : MonoBehaviour {
             counter++;
             time = 0;
         }
-        
+        */
 
+        /*
         if (Input.GetKeyDown(KeyCode.Return))
         {
             waiting = true;
@@ -125,6 +145,22 @@ public class GraphVisualizer : MonoBehaviour {
         {
             if (communicator.isFinished()) { Debug.Log("Finished fetching random article: " + communicator.getContent()); waiting = false; }
         }
+        */
+
+        
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("Pressed Return Key.");
+            Debug.Log(graph.getNodes().Count);
+            Debug.Log(System.Environment.TickCount - measuringTime);
+
+            FruchtermanReingold();
+            drawGraph();
+            Debug.Log("Graph drawn?");
+
+            oneAndDone = false;
+        }
+        
     }
 
     public void setGraph(Graph graph)
@@ -160,15 +196,13 @@ public class GraphVisualizer : MonoBehaviour {
         boundaries.height = DEFAULT_HEIGHT;
     }
 
-    public float getAttractiveForce(float x) { return x * x / optimalDistance; }
-    public float getRepulsiveForce(float x) { return optimalDistance * optimalDistance / x; }
+    public float getAttractiveForce(float x) { return 100.0f * x * x / optimalDistance; }
+    public float getRepulsiveForce(float x) { return (optimalDistance * optimalDistance / x) * 0.1f; }
 
     public float cool(float t)
     {
         return t - DEFAULT_STEP > 0 ? t - DEFAULT_STEP : 0;
     }
-
-    float temperature;
 
 
     //this algorithm does NOT use the grid variant
@@ -178,11 +212,25 @@ public class GraphVisualizer : MonoBehaviour {
     //IMPORTANT: check divisions! differences may be 0
     public void FruchtermanReingold()
     {
+        Debug.Log("Temperature: "+ temperature);
+
         List<Graph.Node> nodes = graph.getNodes();
         List<Graph.Edge> edges = graph.getEdges();
+
+        /*
+        foreach (Graph.Node n in nodes)
+        {
+            Debug.Log("Name of Node: " + n.getName());
+            Debug.Log("Position of Node: " + n.getX() +", "+ n.getY() + ", "+ n.getZ());
+        }
+        */
+
+        Debug.Log("Number of iterations: " + NUMBER_OF_ITERATIONS);
+
         //float temperature = 5.0f;
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++)
         {
+            Debug.Log("currentIteration: " + i);
             //this is the foreach for repulsive forces
             //it adds to the displacement of a node by calculating repulsive forces for each other node in the graph
             foreach (Graph.Node currentNode in nodes)
@@ -198,13 +246,27 @@ public class GraphVisualizer : MonoBehaviour {
                         float differenceY = currentNode.getY() - node.getY();
                         float differenceZ = currentNode.getZ() - node.getZ();
 
+                        /*Debug.Log("Difference for " + node.getName()+ "is: x: "+differenceX+", y: "+differenceY+", z: "+differenceZ);*/
+
                         //this is |difference|
                         float differenceLength = Mathf.Sqrt(differenceX * differenceX +
                             differenceY * differenceY +
                             differenceZ * differenceZ);
 
+                        /*Debug.Log("DifferenceLength is " + differenceLength);*/
+
                         //v.disp := v.disp + (difference / |difference|) * repForce(|difference|)
+
                         float repulsiveForce = getRepulsiveForce(differenceLength);
+
+                        /*Debug.Log("RepulsiveForce is " +repulsiveForce);*/
+
+                        /*
+                        Debug.Log("Displacement is x: " + (differenceX / differenceLength) * repulsiveForce +
+                            "y: " + (differenceY / differenceLength) * repulsiveForce +
+                            "z: " + (differenceZ / differenceLength) * repulsiveForce);
+                            */
+
                         currentNode.addDisplacement((differenceX / differenceLength) * repulsiveForce,
                             (differenceY / differenceLength) * repulsiveForce,
                             (differenceZ / differenceLength) * repulsiveForce);
@@ -217,7 +279,8 @@ public class GraphVisualizer : MonoBehaviour {
             //similar to above but with edges
             foreach (Graph.Edge edge in edges)
             {
-                Debug.Log("Reached edge loop");
+                /*Debug.Log("Reached edge loop");*/
+
                 //difference := e.v.pos - e.u.pos
                 float differenceX = edge.getFrom().getX() - edge.getTo().getX();
                 float differenceY = edge.getFrom().getY() - edge.getTo().getY();
@@ -260,7 +323,7 @@ public class GraphVisualizer : MonoBehaviour {
                     Mathf.Pow(node.getDisplacementY(), 2.0f)+
                     Mathf.Pow(node.getDisplacementZ(), 2.0f));
 
-                Debug.Log("DisplacementLength: " + displacementLength);
+                /*Debug.Log("DisplacementLength: " + displacementLength);*/
 
 
                 //NOTE: displacement length?
@@ -278,9 +341,9 @@ public class GraphVisualizer : MonoBehaviour {
                     newPosY,
                     newPosZ);
                     
-                node.setPosition(Mathf.Min(boundaries.width/2.0f, Mathf.Max(-boundaries.width/2, node.getX())),
-                    Mathf.Min(boundaries.height/2.0f, Mathf.Max(-boundaries.height/2.0f, node.getY())),
-                    Mathf.Min(boundaries.length/2.0f, Mathf.Max(-boundaries.length/2.0f, node.getZ())));
+                node.setPosition(Mathf.Min(boundaries.length/2.0f, Mathf.Max(-boundaries.length/2, node.getX())),
+                    Mathf.Min(boundaries.width/2.0f, Mathf.Max(-boundaries.width/2.0f, node.getY())),
+                    Mathf.Min(boundaries.height/2.0f, Mathf.Max(-boundaries.height/2.0f, node.getZ())));
                 wasauchimmer++;      
             }
                 
@@ -291,17 +354,21 @@ public class GraphVisualizer : MonoBehaviour {
         Debug.Log("Reached end of Fruchterman Reingold");
     }
 
-    public List<GameObject> drawGraph()
+    public void drawGraph()
     {
+        drawnNodes = new List<GameObject>();
+        drawnEdges = new List<GameObject>();
+
         //draw nodes
-        List<GameObject> drawnComponents = new List<GameObject>();
-        List<GameObject> lines = new List<GameObject>();
         List<Graph.Node> nodes = graph.getNodes();
         List<Graph.Edge> edges = graph.getEdges();
         foreach (Graph.Node currentNode in nodes)
         {
+            /*Debug.Log("Name: " + currentNode.getName()+", Position: x = "+currentNode.getX()+", y = "+currentNode.getY()+", z = "+currentNode.getZ());*/
             GameObject newBall = Instantiate(ball, new Vector3(currentNode.getX(), currentNode.getY(), currentNode.getZ()), Quaternion.identity);
-            drawnComponents.Add(newBall);
+            /*Debug.Log("object: "+ newBall + ", transform: "+newBall.transform.position.ToString());*/
+            newBall.transform.parent = graphContainer.transform;
+            drawnNodes.Add(newBall);
         }
         
         foreach (Graph.Edge currentEdge in edges)
@@ -314,11 +381,11 @@ public class GraphVisualizer : MonoBehaviour {
             line.SetPosition(0, new Vector3(currentEdge.getTo().getX(), currentEdge.getTo().getY(), currentEdge.getTo().getZ()));
             
             line.SetWidth(0.01f, 0.01f);
-            drawnComponents.Add(lineObject);
-        }
-        
 
-        return drawnComponents;
+            lineObject.transform.parent = graphContainer.transform;
+
+            drawnEdges.Add(lineObject);
+        }
     }
 
     /**
@@ -328,11 +395,13 @@ public class GraphVisualizer : MonoBehaviour {
      */
     IEnumerator getGraph(string startingNode, int hops)
     {
+        isAcquiringGraph = true;
         //Note: We identify graph nodes by string because of easier comprehension
         //Note: Don't confuse the lists graph is taking care of with the list of strings of neighbors...
         Graph graph = new Graph();
         Graph.Information info = new Graph.Information(startingNode);
         Graph.Node firstNode = new Graph.Node(info);
+        firstNode.setPosition(0.0f, 0.0f, 0.0f);
         graph.addNode(firstNode); //this will keep track of ALL accumulated nodes and edges
         
         List<Graph.Node> nodesToCheck = new List<Graph.Node>(); //these are nodes that are found in the neighborhood
@@ -341,24 +410,28 @@ public class GraphVisualizer : MonoBehaviour {
         //NOTE: This version of BFS does currently not keep track of a "visited" list. Since we are limited by hops (which shouldn't ever go above 3 for sanity's sake), we finish searching at some point anyway
         for (int i = 0; i < hops; i++)
         {
+            Debug.Log("Hop: " + i);
             int currentNodesToCheck = nodesToCheck.Count;
             //this is the number of nodes to check the neighborhoods for.
             //All neighbors that are found will be added to "nodesToCheck" in the next loop
             for (int j = 0; j < currentNodesToCheck; j++)
-            { 
+            {
+                Debug.Log("currentNodeToCheck: " + j);
                 //this for iterates a list of nodes that will be explored
                 //KEEP IN MIND it checks the amount of nodes beforehand and works on the first x found nodes because nodes are being added to the list while working on it
                 //i.e. the list nodesToCheck has 1 node in the beginning (starting node), so "currentNodesToCheck" is 1
                 //we now explore this node and find all neighbors and add them to the graph and to nodesToCheck
                 //after the next for loop, nodesToCheck will have a lot of new nodes
                 //when the hop is done, meaning the for loop iterating j has come to an end, delete the first currentNodesToCheck-many elements in nodesToCheck
-                yield return StartCoroutine(communicator.requestNeighbors(nodesToCheck[j]));
+                yield return StartCoroutine(communicator.requestNeighbors(nodesToCheck[j].getName()));
                 List<string> tempNeighbors = communicator.getNeighbors();
                 for (int z = 0; z < tempNeighbors.Count; z++)
                 {
+                    Debug.Log("currentNeighborToCheck: " + z);
                     //this for adds all neighbors of a node that is currently being explored to the list of nodes to be explored and the graph
                     Graph.Information neighborInfo = new Graph.Information(tempNeighbors[z]);
                     Graph.Node nextNode = new Graph.Node(neighborInfo);
+                    nextNode.setPosition(Random.Range(-DEFAULT_WIDTH/2, DEFAULT_WIDTH / 2), Random.Range(-DEFAULT_HEIGHT / 2, DEFAULT_HEIGHT / 2), Random.Range(-DEFAULT_LENGTH / 2, DEFAULT_LENGTH / 2));
                     Graph.Edge nextedge = new Graph.Edge(nodesToCheck[j], nextNode);
                     if (!graph.getNodes().Exists(node => node.getName().Equals(tempNeighbors[z])))
                     {
@@ -367,27 +440,33 @@ public class GraphVisualizer : MonoBehaviour {
                     if (!graph.getEdges().Exists(edge => edge.getFrom().getName().Equals(nodesToCheck[j]) && edge.getTo().getName().Equals(tempNeighbors[z]))) //I don't want to talk about this
                     {
                         //above if should check if edge is already in list
-
-                        /**
+                        
                         int oppositeEdge = graph.getEdges().FindIndex(edge => edge.getFrom().getName().Equals(tempNeighbors[z]) && edge.getTo().getName().Equals(nodesToCheck[j]));
                         if (oppositeEdge >= 0)
                         {
                             //check if the edge exists in the opposite direction (try to find an edge where FROM is the neighbor that is looked at and TO is the node that is being explored)
-                            graph.getEdges()[oppositeEdge]...
+                            graph.getEdges()[oppositeEdge].setBothWays(true);
                         }
-                        
-                        IMPORTANT NOTE: THE ABOVE STEP IS NECESSARY WHEN AN EDGE IS SAVED WITH A FLAG THAT INDICATES IT GOES IN BOTH DIRECTIONS
-                        AN EDGE IS CURRENTLY MODELED SO THAT EDGES BETWEEN TWO NODES CAN BE ADDED TWICE IF THEY ARE OPPOSITES
-                        I only realised I could've left this out after I almost finished it.
-                        */
-                        graph.addEdge(nextedge); //add edge to graph if not already in graph
+                        else
+                        {
+                            /*
+                            IMPORTANT NOTE: THE ABOVE STEP IS NECESSARY WHEN AN EDGE IS SAVED WITH A FLAG THAT INDICATES IT GOES IN BOTH DIRECTIONS
+                            AN EDGE IS CURRENTLY MODELED SO THAT EDGES BETWEEN TWO NODES CAN BE ADDED TWICE IF THEY ARE OPPOSITES
+                            I only realised I could've left this out after I almost finished it.
+
+                            EDIT: Edges now have a flag that says whether it runs in both ways or not.
+                            */
+                            graph.addEdge(nextedge); //add edge to graph if not already in graph
+                        }
                     }
                     nodesToCheck.Add(nextNode); //this adds the currently looked at node to the list of nodes to explore
                 }
             }
             nodesToCheck.RemoveRange(0, currentNodesToCheck); //see comment at start of for loop iterating j for more information on why this is necessary
         }
-        this.graph = graph;
+        setGraph(graph, 100.0f, 100.0f, 100.0f);
+        Debug.Log("Almost finished fetching data");
+        isAcquiringGraph = false;
     }
 
 
@@ -418,6 +497,14 @@ public class GraphVisualizer : MonoBehaviour {
             }
             //after finishing this loop, all unnecessary nodes and edges will be gone
             //hopefully.
+        }
+    }
+
+    public void setNumberOfIterations(int value)
+    {
+        if (value >= 0 && value <= 200)
+        {
+            NUMBER_OF_ITERATIONS = value;
         }
     }
 

@@ -129,10 +129,12 @@ public class Graph {
     {
         private Node start;
         private Node end;
+        private bool isBothWays;
         public Edge(Node start, Node end)
         {
             this.start = start;
             this.end = end;
+            isBothWays = false;
         }
 
         public Node getFrom()
@@ -143,6 +145,11 @@ public class Graph {
         public Node getTo()
         {
             return end;
+        }
+
+        public void setBothWays(bool contrary)
+        {
+            isBothWays = contrary;
         }
     }
 
