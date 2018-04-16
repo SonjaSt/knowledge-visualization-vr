@@ -1,0 +1,40 @@
+\select@language {english}
+\select@language {ngerman}
+\select@language {english}
+\select@language {ngerman}
+\contentsline {figure}{\numberline {1}{\ignorespaces Konzept zur Realisierung eines VR-Systems}}{12}{figure.caption.4}
+\contentsline {figure}{\numberline {2}{\ignorespaces W\IeC {\"u}rfel zur Darstellung des Zusammenhangs zwischen Autonomie, Interaktivit\IeC {\"a}t und Pr\IeC {\"a}senz}}{13}{figure.caption.5}
+\contentsline {figure}{\numberline {3}{\ignorespaces Beispiel eines ungerichteten Graphen}}{15}{figure.caption.6}
+\contentsline {figure}{\numberline {4}{\ignorespaces Zwei Graphen mit je einem Weg oder Kreis eingezeichnet\relax }}{15}{figure.caption.7}
+\contentsline {subfigure}{\numberline {a}{\ignorespaces Beispiel eines Weges innerhalb eines Graphen}}{15}{figure.caption.7}
+\contentsline {subfigure}{\numberline {b}{\ignorespaces Beispiel eines Kreises innerhalb eines Graphen}}{15}{figure.caption.7}
+\contentsline {figure}{\numberline {5}{\ignorespaces Beispiel eines gerichteten Graphen}}{16}{figure.caption.8}
+\contentsline {figure}{\numberline {6}{\ignorespaces Zwei Diagramme, die beide verdeutlichen sollen, ob Temperaturen bei Raketenstarts wesentlich Schaden an einer Rakete anrichten k\IeC {\"o}nnen\relax }}{19}{figure.caption.9}
+\contentsline {subfigure}{\numberline {a}{\ignorespaces Diagramm zur Verdeutlichung der Korrelation zwischen Schaden an einer Rakete und Au\IeC {\ss }entemperatur}}{19}{figure.caption.9}
+\contentsline {subfigure}{\numberline {b}{\ignorespaces Diagramm, in dem Informationen \IeC {\"u}ber Temperatur und Schaden in Abbildungen von Raketen eingezeichnet ist}}{19}{figure.caption.9}
+\contentsline {figure}{\numberline {7}{\ignorespaces Prozess der Umwandlung von rohen Daten in Visualisierungen}}{20}{figure.caption.10}
+\contentsline {figure}{\numberline {8}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber Ergebnisse verschiedener Visualisierungsalgorithmen f\IeC {\"u}r Graphen\relax }}{27}{figure.caption.11}
+\contentsline {subfigure}{\numberline {a}{\ignorespaces Visualisierung eines dichten Graphen}}{27}{figure.caption.11}
+\contentsline {subfigure}{\numberline {b}{\ignorespaces Visualisierung eines asymmetrischen Graphen}}{27}{figure.caption.11}
+\contentsline {subfigure}{\numberline {c}{\ignorespaces Visualisierung eines Graphen, die in 30 Sekunden berechnet wurde}}{27}{figure.caption.11}
+\contentsline {subfigure}{\numberline {d}{\ignorespaces Visualisierung eines \IeC {\"a}sthetischen Graphen, die in 10 Minuten berechnet wurde}}{27}{figure.caption.11}
+\contentsline {figure}{\numberline {9}{\ignorespaces Beispielhafter Ausschnitt aus der Wikipedia}}{28}{figure.caption.12}
+\contentsline {figure}{\numberline {10}{\ignorespaces Ein m\IeC {\"a}\IeC {\ss }ig gro\IeC {\ss }er Baum}}{31}{figure.caption.13}
+\contentsline {figure}{\numberline {11}{\ignorespaces Darstellung eines Teilgraphen mit $j=2$ und $avgDegree=4$}}{32}{figure.caption.14}
+\contentsline {figure}{\numberline {12}{\ignorespaces Ein Gittergraph mit Breite $W$, H\IeC {\"o}he $H$ und $|V|=36$}}{36}{figure.caption.15}
+\contentsline {figure}{\numberline {13}{\ignorespaces Graph mit gitterbasierter Unterteilung}}{39}{figure.caption.16}
+\contentsline {figure}{\numberline {14}{\ignorespaces Ausschnitt der Wikipedia wie er dargestellt werden soll und wie er f\IeC {\"u}r den ausgew\IeC {\"a}hlten Visualisierungsalgorithmus behandelt wird.\relax }}{41}{figure.caption.17}
+\contentsline {subfigure}{\numberline {a}{\ignorespaces Teilgraph der Wikipedia mit Informationen \IeC {\"u}ber Linkrichtungen}}{41}{figure.caption.17}
+\contentsline {subfigure}{\numberline {b}{\ignorespaces Teilgraph der Wikipedia, wie er vom Algorithmus behandelt wird}}{41}{figure.caption.17}
+\contentsline {figure}{\numberline {15}{\ignorespaces Darstellung einzelner Informationen eines Wikipediaartikels im Raum}}{43}{figure.caption.18}
+\contentsline {figure}{\numberline {16}{\ignorespaces Ausschnitt des Graphen zur Struktur des englischen Wikipedia Artikels "`Wish You Were Here (Pink Floyd Album)"'}}{44}{figure.caption.19}
+\contentsline {figure}{\numberline {17}{\ignorespaces Beispielhafter Teilausschnitt aus der Wikipedia}}{47}{figure.caption.20}
+\contentsline {figure}{\numberline {18}{\ignorespaces Ausklappen eines neuen Knotens\relax }}{49}{figure.caption.21}
+\contentsline {subfigure}{\numberline {a}{\ignorespaces Graph mit $|V|=36$ und $|Gitterboxen|=9$}}{49}{figure.caption.21}
+\contentsline {subfigure}{\numberline {b}{\ignorespaces "`Ausklappen"' eines neuen Knotens}}{49}{figure.caption.21}
+\contentsline {subfigure}{\numberline {c}{\ignorespaces Graph, der durch L\IeC {\"o}schen unerreichbarer Knoten entsteht}}{49}{figure.caption.21}
+\contentsline {figure}{\numberline {19}{\ignorespaces Darstellung einzelner Artikelinhalte in VR}}{51}{figure.caption.22}
+\contentsline {figure}{\numberline {20}{\ignorespaces Grober Aufbau einer m\IeC {\"o}glichen Anwendung zur Visualisierung eines Graphen in VR}}{53}{figure.caption.23}
+\contentsline {figure}{\numberline {21}{\ignorespaces Verschiedene Visualisierung eines Teilausschnitts der Wikipedia, ausgehend vom gleichen Startartikel, eigene Darstellung\relax }}{65}{figure.caption.24}
+\contentsline {subfigure}{\numberline {a}{\ignorespaces Visualisierter Graph mit $|V|=157$ und $|Spruenge|=1$}}{65}{figure.caption.24}
+\contentsline {subfigure}{\numberline {b}{\ignorespaces Visualisierter Graph mit $|V|=250$ und $|Hops|=2$}}{65}{figure.caption.24}

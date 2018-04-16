@@ -1,0 +1,980 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Arumugam%
+, Brandst{\"a}dt%
+, Nishizeki%
+\BCBL {}\ \BBA {} Thulasiraman%
+}{%
+Arumugam%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2016}}%
+}]{%
+arumugam2016handbook}
+\APACinsertmetastar {%
+arumugam2016handbook}%
+\begin{APACrefauthors}%
+Arumugam, S.%
+, Brandst{\"a}dt, A.%
+, Nishizeki, T.%
+\BCBL {}\ \BBA {} Thulasiraman, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2016}.
+\newblock
+\APACrefbtitle {Handbook of graph theory, combinatorial optimization, and
+  algorithms} {Handbook of graph theory, combinatorial optimization, and
+  algorithms}.
+\newblock
+\APACaddressPublisher{}{Chapman and Hall/CRC}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bang-Jensen%
+\ \BBA {} Gutin%
+}{%
+Bang-Jensen%
+\ \BBA {} Gutin%
+}{%
+{\protect \APACyear {2008}}%
+}]{%
+bang2008digraphs}
+\APACinsertmetastar {%
+bang2008digraphs}%
+\begin{APACrefauthors}%
+Bang-Jensen, J.%
+\BCBT {}\ \BBA {} Gutin, G\BPBI Z.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2008}.
+\newblock
+\APACrefbtitle {Digraphs: theory, algorithms and applications} {Digraphs:
+  theory, algorithms and applications}.
+\newblock
+\APACaddressPublisher{}{Springer Science \& Business Media}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bertacchini%
+, Bilotta%
+, Pantano%
+\BCBL {}\ \BBA {} Tavernise%
+}{%
+Bertacchini%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+bertacchini2012motivating}
+\APACinsertmetastar {%
+bertacchini2012motivating}%
+\begin{APACrefauthors}%
+Bertacchini, F.%
+, Bilotta, E.%
+, Pantano, P.%
+\BCBL {}\ \BBA {} Tavernise, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Motivating the learning of science topics in secondary
+  school: A constructivist edutainment setting for studying Chaos} {Motivating
+  the learning of science topics in secondary school: A constructivist
+  edutainment setting for studying chaos}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Computers \& Education}{59}{4}{1377--1386}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Brath%
+}{%
+Brath%
+}{%
+{\protect \APACyear {1997}}%
+}]{%
+brath1997metrics}
+\APACinsertmetastar {%
+brath1997metrics}%
+\begin{APACrefauthors}%
+Brath, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1997}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Metrics for effective information visualization}
+  {Metrics for effective information visualization}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Information Visualization, 1997. Proceedings., IEEE
+  Symposium on} {Information visualization, 1997. proceedings., ieee symposium
+  on}\ (\BPGS\ 108--111).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Brooks~Jr%
+\ \protect \BOthers {.}}{%
+Brooks~Jr%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1992}}%
+}]{%
+brooks1992research}
+\APACinsertmetastar {%
+brooks1992research}%
+\begin{APACrefauthors}%
+Brooks~Jr, F.%
+, Marcus~Brown, U.%
+, Burbeck, T\BPBI C.%
+, Durlach, N.%
+, Ellis, M\BPBI S.%
+, Lackner, J.%
+\BDBL {}others%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1992}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Research directions in virtual environments} {Research
+  directions in virtual environments}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Computer Graphics}{26}{3}{153}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bryson%
+}{%
+Bryson%
+}{%
+{\protect \APACyear {1996}}%
+}]{%
+bryson1996virtual}
+\APACinsertmetastar {%
+bryson1996virtual}%
+\begin{APACrefauthors}%
+Bryson, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1996}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Virtual reality in scientific visualization} {Virtual
+  reality in scientific visualization}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Communications of the ACM}{39}{5}{62--71}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Card%
+, Mackinlay%
+\BCBL {}\ \BBA {} Shneiderman%
+}{%
+Card%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1999}}%
+}]{%
+card1999readings}
+\APACinsertmetastar {%
+card1999readings}%
+\begin{APACrefauthors}%
+Card, S\BPBI K.%
+, Mackinlay, J\BPBI D.%
+\BCBL {}\ \BBA {} Shneiderman, B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1999}.
+\newblock
+\APACrefbtitle {Readings in information visualization: using vision to think}
+  {Readings in information visualization: using vision to think}.
+\newblock
+\APACaddressPublisher{}{Morgan Kaufmann}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Carlsson%
+\ \BBA {} Hagsand%
+}{%
+Carlsson%
+\ \BBA {} Hagsand%
+}{%
+{\protect \APACyear {1993}}%
+}]{%
+carlsson1993dive}
+\APACinsertmetastar {%
+carlsson1993dive}%
+\begin{APACrefauthors}%
+Carlsson, C.%
+\BCBT {}\ \BBA {} Hagsand, O.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1993}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {DIVE A multi-user virtual reality system} {Dive a
+  multi-user virtual reality system}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Virtual Reality Annual International Symposium, 1993.,
+  1993 IEEE} {Virtual reality annual international symposium, 1993., 1993
+  ieee}\ (\BPGS\ 394--400).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Davidson%
+\ \BBA {} Harel%
+}{%
+Davidson%
+\ \BBA {} Harel%
+}{%
+{\protect \APACyear {1996}}%
+}]{%
+davidson1996drawing}
+\APACinsertmetastar {%
+davidson1996drawing}%
+\begin{APACrefauthors}%
+Davidson, R.%
+\BCBT {}\ \BBA {} Harel, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1996}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Drawing graphs nicely using simulated annealing}
+  {Drawing graphs nicely using simulated annealing}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{ACM Transactions on Graphics (TOG)}{15}{4}{301--331}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Diestel%
+}{%
+Diestel%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+diestel2017graph}
+\APACinsertmetastar {%
+diestel2017graph}%
+\begin{APACrefauthors}%
+Diestel, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2017}.
+\newblock
+\APACrefbtitle {Graph theory} {Graph theory}.
+\newblock
+\APACaddressPublisher{}{Springer Publishing Company, Incorporated}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Eades%
+}{%
+Eades%
+}{%
+{\protect \APACyear {1984}}%
+}]{%
+eades1984heuristic}
+\APACinsertmetastar {%
+eades1984heuristic}%
+\begin{APACrefauthors}%
+Eades, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1984}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A heuristic for graph drawing} {A heuristic for graph
+  drawing}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Congressus numerantium}{42}{}{149--160}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Franchi%
+}{%
+Franchi%
+}{%
+{\protect \APACyear {1994}}%
+}]{%
+franchi1994virtual}
+\APACinsertmetastar {%
+franchi1994virtual}%
+\begin{APACrefauthors}%
+Franchi, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1994}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Virtual reality: An overview} {Virtual reality: An
+  overview}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{TechTrends}{39}{1}{23--26}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Freitas%
+\ \protect \BOthers {.}}{%
+Freitas%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2002}}%
+}]{%
+freitas2002evaluating}
+\APACinsertmetastar {%
+freitas2002evaluating}%
+\begin{APACrefauthors}%
+Freitas, C\BPBI M.%
+, Luzzardi, P\BPBI R.%
+, Cava, R\BPBI A.%
+, Winckler, M.%
+, Pimenta, M\BPBI S.%
+\BCBL {}\ \BBA {} Nedel, L\BPBI P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2002}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {On evaluating information visualization techniques} {On
+  evaluating information visualization techniques}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the working conference on Advanced Visual
+  Interfaces} {Proceedings of the working conference on advanced visual
+  interfaces}\ (\BPGS\ 373--374).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fruchterman%
+\ \BBA {} Reingold%
+}{%
+Fruchterman%
+\ \BBA {} Reingold%
+}{%
+{\protect \APACyear {1991}}%
+}]{%
+fruchterman1991graph}
+\APACinsertmetastar {%
+fruchterman1991graph}%
+\begin{APACrefauthors}%
+Fruchterman, T\BPBI M.%
+\BCBT {}\ \BBA {} Reingold, E\BPBI M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1991}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Graph drawing by force-directed placement} {Graph
+  drawing by force-directed placement}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Software: Practice and experience}{21}{11}{1129--1164}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Herman%
+, Melan{\c{c}}on%
+\BCBL {}\ \BBA {} Marshall%
+}{%
+Herman%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2000}}%
+}]{%
+herman2000graph}
+\APACinsertmetastar {%
+herman2000graph}%
+\begin{APACrefauthors}%
+Herman, I.%
+, Melan{\c{c}}on, G.%
+\BCBL {}\ \BBA {} Marshall, M\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2000}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Graph visualization and navigation in information
+  visualization: A survey} {Graph visualization and navigation in information
+  visualization: A survey}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{IEEE Transactions on visualization and computer
+  graphics}{6}{1}{24--43}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {{HTC} {V}ive --- {T}echnische {D}aten}}{%
+\APACcitebtitle {{HTC} {V}ive --- {T}echnische {D}aten}}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+vive:01}
+\APACinsertmetastar {%
+vive:01}%
+\APACrefbtitle {{HTC} {V}ive --- {T}echnische {D}aten.} {{HTC} {V}ive ---
+  {T}echnische {D}aten.}
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APAChowpublished {\url{https://www.vive.com/de/product/#vive-spec}}.
+\newblock
+\APACrefnote{Abgerufen am 10. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Isdale%
+}{%
+Isdale%
+}{%
+{\protect \APACyear {1998}}%
+}]{%
+isdale1998virtual}
+\APACinsertmetastar {%
+isdale1998virtual}%
+\begin{APACrefauthors}%
+Isdale, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1998}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {What is virtual reality} {What is virtual
+  reality}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Virtual Reality Information Resources http://www. isx.
+  com/\~{} jisdale/WhatIsVr. html}{4}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kamada%
+, Kawai%
+\BCBL {}\ \protect \BOthers {.}}{%
+Kamada%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1989}}%
+}]{%
+kamada1989algorithm}
+\APACinsertmetastar {%
+kamada1989algorithm}%
+\begin{APACrefauthors}%
+Kamada, T.%
+, Kawai, S.%
+\BCBL {}\ \BOthersPeriod {.}\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1989}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {An algorithm for drawing general undirected graphs} {An
+  algorithm for drawing general undirected graphs}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Information processing letters}{31}{1}{7--15}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kaufmann%
+, Schmalstieg%
+\BCBL {}\ \BBA {} Wagner%
+}{%
+Kaufmann%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2000}}%
+}]{%
+kaufmann2000construct3d}
+\APACinsertmetastar {%
+kaufmann2000construct3d}%
+\begin{APACrefauthors}%
+Kaufmann, H.%
+, Schmalstieg, D.%
+\BCBL {}\ \BBA {} Wagner, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2000}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Construct3D: a virtual reality application for
+  mathematics and geometry education} {Construct3d: a virtual reality
+  application for mathematics and geometry education}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Education and information
+  technologies}{5}{4}{263--276}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Mazuryk%
+\ \BBA {} Gervautz%
+}{%
+Mazuryk%
+\ \BBA {} Gervautz%
+}{%
+{\protect \APACyear {1996}}%
+}]{%
+mazuryk1996virtual}
+\APACinsertmetastar {%
+mazuryk1996virtual}%
+\begin{APACrefauthors}%
+Mazuryk, T.%
+\BCBT {}\ \BBA {} Gervautz, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1996}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Virtual reality-history, applications, technology and
+  future} {Virtual reality-history, applications, technology and
+  future}.{\BBCQ}
+\newblock
+
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Meyer%
+\ \BBA {} Cook%
+}{%
+Meyer%
+\ \BBA {} Cook%
+}{%
+{\protect \APACyear {2000}}%
+}]{%
+meyer2000visualization}
+\APACinsertmetastar {%
+meyer2000visualization}%
+\begin{APACrefauthors}%
+Meyer, R\BPBI D.%
+\BCBT {}\ \BBA {} Cook, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2000}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Visualization of data} {Visualization of data}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Current Opinion in Biotechnology}{11}{1}{89--96}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {Moodle --- {M}oodle der {H}ochschule {A}ugsburg}}{%
+\APACcitebtitle {Moodle --- {M}oodle der {H}ochschule {A}ugsburg}}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+moodleAugsburg:01}
+\APACinsertmetastar {%
+moodleAugsburg:01}%
+\APACrefbtitle {Moodle --- {M}oodle der {H}ochschule {A}ugsburg.} {Moodle ---
+  {M}oodle der {H}ochschule {A}ugsburg.}
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APAChowpublished {\url{https://moodle.hs-augsburg.de/}}.
+\newblock
+\APACrefnote{Abgerufen am 09. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {Moodle --- {M}oodle {S}tatistics}}{%
+\APACcitebtitle {Moodle --- {M}oodle {S}tatistics}}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+Moodle:02}
+\APACinsertmetastar {%
+Moodle:02}%
+\APACrefbtitle {Moodle --- {M}oodle {S}tatistics.} {Moodle --- {M}oodle
+  {S}tatistics.}
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APAChowpublished {\url{http://moodle.net/stats/}}.
+\newblock
+\APACrefnote{Abgerufen am 25. Januar 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {{M}oodle --- {T}echnische {H}ochschule {I}ngolstadt}}{%
+\APACcitebtitle {{M}oodle --- {T}echnische {H}ochschule {I}ngolstadt}}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+moodleIngolstadt:01}
+\APACinsertmetastar {%
+moodleIngolstadt:01}%
+\APACrefbtitle {{M}oodle --- {T}echnische {H}ochschule {I}ngolstadt.} {{M}oodle
+  --- {T}echnische {H}ochschule {I}ngolstadt.}
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APAChowpublished {\url{https://moodle.thi.de/moodle/}}.
+\newblock
+\APACrefnote{Abgerufen am 09. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {Moodle --- {TUM}-{M}oodle}}{%
+\APACcitebtitle {Moodle --- {TUM}-{M}oodle}}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+moodleTUM:01}
+\APACinsertmetastar {%
+moodleTUM:01}%
+\APACrefbtitle {Moodle --- {TUM}-{M}oodle.} {Moodle --- {TUM}-{M}oodle.}
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APAChowpublished {\url{https://www.moodle.tum.de/}}.
+\newblock
+\APACrefnote{Abgerufen am 09. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {{M}oodle --- {W}as ist {M}oodle}}{%
+\APACcitebtitle {{M}oodle --- {W}as ist {M}oodle}}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+Moodle:01}
+\APACinsertmetastar {%
+Moodle:01}%
+\APACrefbtitle {{M}oodle --- {W}as ist {M}oodle.} {{M}oodle --- {W}as ist
+  {M}oodle.}
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APAChowpublished {\url{https://docs.moodle.org/34/de/Was_ist_Moodle}}.
+\newblock
+\APACrefnote{Abgerufen am 25. Januar 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Munzner%
+\ \BBA {} Burchard%
+}{%
+Munzner%
+\ \BBA {} Burchard%
+}{%
+{\protect \APACyear {1995}}%
+}]{%
+munzner1995visualizing}
+\APACinsertmetastar {%
+munzner1995visualizing}%
+\begin{APACrefauthors}%
+Munzner, T.%
+\BCBT {}\ \BBA {} Burchard, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1995}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Visualizing the structure of the World Wide Web in 3D
+  hyperbolic space} {Visualizing the structure of the world wide web in 3d
+  hyperbolic space}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the first symposium on Virtual reality
+  modeling language} {Proceedings of the first symposium on virtual reality
+  modeling language}\ (\BPGS\ 33--38).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Okoli%
+}{%
+Okoli%
+}{%
+{\protect \APACyear {2009}}%
+}]{%
+okoli2009brief}
+\APACinsertmetastar {%
+okoli2009brief}%
+\begin{APACrefauthors}%
+Okoli, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A brief review of studies of Wikipedia in peer-reviewed
+  journals} {A brief review of studies of wikipedia in peer-reviewed
+  journals}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Digital Society, 2009. ICDS'09. Third International
+  Conference on} {Digital society, 2009. icds'09. third international
+  conference on}\ (\BPGS\ 155--160).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Park%
+\ \protect \BOthers {.}}{%
+Park%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+park2011virtual}
+\APACinsertmetastar {%
+park2011virtual}%
+\begin{APACrefauthors}%
+Park, K\BHBI M.%
+, Ku, J.%
+, Choi, S\BHBI H.%
+, Jang, H\BHBI J.%
+, Park, J\BHBI Y.%
+, Kim, S\BPBI I.%
+\BCBL {}\ \BBA {} Kim, J\BHBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A virtual reality application in role-plays of social
+  skills training for schizophrenia: a randomized, controlled trial} {A virtual
+  reality application in role-plays of social skills training for
+  schizophrenia: a randomized, controlled trial}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Psychiatry research}{189}{2}{166--172}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Raithel%
+, Dollinger%
+\BCBL {}\ \BBA {} H{\"o}rmann%
+}{%
+Raithel%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2008}}%
+}]{%
+raithel2008einfuhrung}
+\APACinsertmetastar {%
+raithel2008einfuhrung}%
+\begin{APACrefauthors}%
+Raithel, J.%
+, Dollinger, B.%
+\BCBL {}\ \BBA {} H{\"o}rmann, G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2008}.
+\newblock
+\APACrefbtitle {Einf{\"u}hrung P{\"a}dagogik:
+  Begriffe-Str{\"o}mungen-Klassiker-Fachrichtungen} {Einf{\"u}hrung
+  p{\"a}dagogik: Begriffe-str{\"o}mungen-klassiker-fachrichtungen}.
+\newblock
+\APACaddressPublisher{}{Springer-Verlag}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Strickland%
+}{%
+Strickland%
+}{%
+{\protect \APACyear {1996}}%
+}]{%
+strickland1996virtual}
+\APACinsertmetastar {%
+strickland1996virtual}%
+\begin{APACrefauthors}%
+Strickland, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1996}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A virtual reality application with autistic children} {A
+  virtual reality application with autistic children}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Presence: Teleoperators \& Virtual
+  Environments}{5}{3}{319--329}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Sutherland%
+}{%
+Sutherland%
+}{%
+{\protect \APACyear {1968}}%
+}]{%
+sutherland1968head}
+\APACinsertmetastar {%
+sutherland1968head}%
+\begin{APACrefauthors}%
+Sutherland, I\BPBI E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1968}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A head-mounted three dimensional display} {A
+  head-mounted three dimensional display}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the December 9-11, 1968, fall joint
+  computer conference, part I} {Proceedings of the december 9-11, 1968, fall
+  joint computer conference, part i}\ (\BPGS\ 757--764).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Terhart%
+}{%
+Terhart%
+}{%
+{\protect \APACyear {2003}}%
+}]{%
+terhart2003constructivism}
+\APACinsertmetastar {%
+terhart2003constructivism}%
+\begin{APACrefauthors}%
+Terhart, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2003}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Constructivism and teaching: a new paradigm in general
+  didactics?} {Constructivism and teaching: a new paradigm in general
+  didactics?}{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of curriculum studies}{35}{1}{25--44}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Wikimedia contributors}%
+}{%
+{Wikimedia contributors}%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+{\protect \APACexlab {{\protect \BCntND {1}}}}}]{%
+wiki:04}
+\APACinsertmetastar {%
+wiki:04}%
+\begin{APACrefauthors}%
+{Wikimedia contributors}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}{\protect \BCntND {1}}}{}{}.
+\newblock
+\APACrefbtitle {{C}ommons{:}{P}rojektumfang{/}{E}rlaubte {D}ateitypen.}
+  {{C}ommons{:}{P}rojektumfang{/}{E}rlaubte {D}ateitypen.}
+\newblock
+\APAChowpublished
+  {\url{https://commons.wikimedia.org/wiki/Commons:Project_scope/Allowable_file_types/de}}.
+\newblock
+\APACrefnote{Abgerufen am 10. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Wikimedia contributors}%
+}{%
+{Wikimedia contributors}%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+{\protect \APACexlab {{\protect \BCntND {2}}}}}]{%
+wiki:TUMlogo}
+\APACinsertmetastar {%
+wiki:TUMlogo}%
+\begin{APACrefauthors}%
+{Wikimedia contributors}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}{\protect \BCntND {2}}}{}{}.
+\newblock
+\APACrefbtitle {{W}ikimedia {C}ommons --- {L}ogo der {T}echnischen
+  {U}niversität {M}ünchen.} {{W}ikimedia {C}ommons --- {L}ogo der
+  {T}echnischen {U}niversität {M}ünchen.}
+\newblock
+\APAChowpublished
+  {\url{https://commons.wikimedia.org/wiki/File:Logo_of_the_Technical_University_of_Munich.svg}}.
+\newblock
+\APACrefnote{Abgerufen am 10. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Wikipedia contributors}%
+}{%
+{Wikipedia contributors}%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+{\protect \APACexlab {{\protect \BCntND {1}}}}}]{%
+Wiki:02}
+\APACinsertmetastar {%
+Wiki:02}%
+\begin{APACrefauthors}%
+{Wikipedia contributors}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}{\protect \BCntND {1}}}{}{}.
+\newblock
+\APACrefbtitle {{S}tatistik --- {W}ikipedia{,} The Free Encyclopedia.}
+  {{S}tatistik --- {W}ikipedia{,} the free encyclopedia.}
+\newblock
+\APAChowpublished {\url{https://de.wikipedia.org/wiki/Spezial:Statistik}}.
+\newblock
+\APACrefnote{Abgerufen am 10. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Wikipedia contributors}%
+}{%
+{Wikipedia contributors}%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+{\protect \APACexlab {{\protect \BCntND {2}}}}}]{%
+wiki:03}
+\APACinsertmetastar {%
+wiki:03}%
+\begin{APACrefauthors}%
+{Wikipedia contributors}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}{\protect \BCntND {2}}}{}{}.
+\newblock
+\APACrefbtitle {{W}ikipedia{:}{F}ormatvorlage{/}{M}usterartikel ---
+  {W}ikipedia{,} The Free Encyclopedia.}
+  {{W}ikipedia{:}{F}ormatvorlage{/}{M}usterartikel --- {W}ikipedia{,} the free
+  encyclopedia.}
+\newblock
+\APAChowpublished
+  {\url{https://de.wikipedia.org/wiki/Wikipedia:Formatvorlage/Musterartikel}}.
+\newblock
+\APACrefnote{Abgerufen am 10. April 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Wikipedia contributors}%
+}{%
+{Wikipedia contributors}%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+{\protect \APACexlab {{\protect \BCntND {3}}}}}]{%
+Wiki:01}
+\APACinsertmetastar {%
+Wiki:01}%
+\begin{APACrefauthors}%
+{Wikipedia contributors}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}{\protect \BCntND {3}}}{}{}.
+\newblock
+\APACrefbtitle {Wikipedia --- {W}ikipedia{,} The Free Encyclopedia.} {Wikipedia
+  --- {W}ikipedia{,} the free encyclopedia.}
+\newblock
+\APAChowpublished {\url{https://de.wikipedia.org/wiki/Wikipedia}}.
+\newblock
+\APACrefnote{Abgerufen am 25. Januar 2018}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Zeltzer%
+}{%
+Zeltzer%
+}{%
+{\protect \APACyear {1992}}%
+}]{%
+zeltzer1992autonomy}
+\APACinsertmetastar {%
+zeltzer1992autonomy}%
+\begin{APACrefauthors}%
+Zeltzer, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1992}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Autonomy, interaction, and presence} {Autonomy,
+  interaction, and presence}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Presence: Teleoperators \& Virtual
+  Environments}{1}{1}{127--132}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

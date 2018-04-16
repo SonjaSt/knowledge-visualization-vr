@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scenes/GraphVisualization_withoutTeleportation.unity
+  isLoaded: 1
+  isActive: 1

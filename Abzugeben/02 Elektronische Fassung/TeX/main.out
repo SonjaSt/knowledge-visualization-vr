@@ -1,0 +1,36 @@
+\BOOKMARK [1][-]{Doc-Start}{Zusammenfassung/Abstract}{}% 1
+\BOOKMARK [1][-]{section*.2}{II Abbildungsverzeichnis}{}% 2
+\BOOKMARK [1][-]{section*.2}{Abk\374rzungsverzeichnis}{}% 3
+\BOOKMARK [1][-]{section.1}{Einleitung}{}% 4
+\BOOKMARK [2][-]{subsection.1.1}{Motivation}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.2}{Hintergrund und \344hnliche Werke}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Hintergrundwissen}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Anwendungen im virtuellen Raum}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{Grundlagen der Graphentheorie}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Visualisierung von Informationen}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Algorithmen zur Visualisierung von Graphen}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{Konzept}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Aufbau und Kategorisierung der Wikipedia}{section.3}% 13
+\BOOKMARK [3][-]{subsubsection.3.1.1}{\334bersetzung des Aufbaus der Wikipedia in einen Wissensgraphen}{subsection.3.1}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Auff\374hren der einzelnen Elemente eines Wikipedia-Artikels}{subsection.3.1}% 15
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Auff\374hren der komplexit\344tsbestimmenden Parameter}{subsection.3.1}% 16
+\BOOKMARK [2][-]{subsection.3.2}{Visualisierung von Artikeln und Verlinkungen in VR}{section.3}% 17
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Fruchterman-Reingold-Algorithmus im dreidimensionalen Raum}{subsection.3.2}% 18
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Steigerung der Effizienz des vorgestellten Algorithmus}{subsection.3.2}% 19
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Bedeutung der Kantenrichtungen f\374r Algorithmus und Darstellung}{subsection.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.3}{Visualisierung von einzelnen Artikeln in VR}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Darstellung der Teilelemente eines Artikels in VR}{subsection.3.3}% 22
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Darstellung der Struktur eines Artikels in VR}{subsection.3.3}% 23
+\BOOKMARK [2][-]{subsection.3.4}{Traversierung des gezeichneten Graphen und darin enthaltener Informationen in VR}{section.3}% 24
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Berechnung neuer Teilabschnitte eines Graphen}{subsection.3.4}% 25
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Steuerung und Manipulation des Graphen}{subsection.3.4}% 26
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Steuerung und Manipulation einzelner Artikel}{subsection.3.4}% 27
+\BOOKMARK [3][-]{subsubsection.3.4.4}{Theoretischer Aufbau einer Anwendung zur Visualisierung der Wikipedia in VR}{subsection.3.4}% 28
+\BOOKMARK [1][-]{section.4}{Implementierung}{}% 29
+\BOOKMARK [2][-]{subsection.4.1}{Importieren von Knoten, Kanten und Artikelinhalten aus dem Internet}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.2}{Modellierung eines User Interfaces}{section.4}% 31
+\BOOKMARK [2][-]{subsection.4.3}{Umsetzung des Visualisierungsalgorithmus}{section.4}% 32
+\BOOKMARK [2][-]{subsection.4.4}{Gegen\374berstellung verschiedener Konfigurationen}{section.4}% 33
+\BOOKMARK [2][-]{subsection.4.5}{Technische Daten des verwendeten Systems}{section.4}% 34
+\BOOKMARK [1][-]{section.5}{Schluss}{}% 35
+\BOOKMARK [1][-]{section.6}{Literaturverzeichnis}{}% 36
