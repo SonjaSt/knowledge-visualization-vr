@@ -4,11 +4,24 @@ using UnityEngine;
 
 /*
  * Most of the comments are for myself, so I can keep track of what I've done.
- * Focusing is hard.
+ * 
+ * Note that not all variables are actually used.
  */
 public class GraphVisualizer : MonoBehaviour {
+    public Material mat; //necessary for occlusion
+    public Font font;
+
+    private string[] sectioned;
+
     List<GameObject> drawnEdges;
     List<GameObject> drawnNodes;
+
+    Graph.Information.Chapter activeNode;
+
+    public GameObject cameraReference;
+
+    private int hops = 1;
+    private int maxNodes = 200;
 
     //the graph container allows for easier manipulation of the drawn graph
     public GameObject graphContainer;
@@ -24,28 +37,25 @@ public class GraphVisualizer : MonoBehaviour {
 
     //this is the model for the ball
     public GameObject ball;
+    public GameObject edgeTo;
 
-    //THESE VALUES NEED TO BE SET TO SPECIFIC VALUES AND MADE PRIVATE
+    //these are values for the FR-Algorithm
     public float DEFAULT_LENGTH = 100.0f;
     public float DEFAULT_WIDTH = 100.0f;
     public float DEFAULT_HEIGHT = 100.0f;
-    public float DEFAULT_VOLUME = 1000000.0f; //IMPORTANT: WHEN VALUES FOUND, SET THIS TO DEFAULT VOLUME
-    public float DEFAULT_CUBE_ROOT = 100.0f; //IMPORTANT: WHEN VALUES FOUND, SET THIS TO DEFAULT CUBE ROOT
+    public float DEFAULT_VOLUME = 1000000.0f; 
+    public float DEFAULT_CUBE_ROOT = 100.0f; 
 
     float temperature;
 
-    public float DEFAULT_STEP = 3.0f;
+    public float DEFAULT_STEP = 3.0f; //these are parameters concerning the FR-Algorithm
     public int NUMBER_OF_ITERATIONS = 50;
 
     private Graph graph;
     private float volume; //this defines the boundaries of the drawn Graph
     private float optimalDistance;
     private Boundaries boundaries;
-
-    //this extracts the body of a wikipedia article in an easy to parse style
-    string message = "https://de.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&explaintext=&titles=";
-    //this string gets the title of a random wikipedia page
-    string random = "https://de.wikipedia.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&rnlimit=1";
+    
 
     public struct Boundaries
     {
@@ -57,33 +67,26 @@ public class GraphVisualizer : MonoBehaviour {
     public void Start()
     {
         communicator = gameObject.AddComponent<WebHandler>(); //this is always necessary
-        /*
-        communicator = new WebHandler();
-        //The string "Graphentheorie" is merely a teststring
-        StartCoroutine(communicator.requestContent(message + "Graphentheorie"));
-        
-        string[] content = communicator.getSectionedContent();
-        for (int i = 0; i < content.Length; i++)
-        {
-            Debug.Log(content[i]);
-        }
-        */
-
-        /* This is for testing
-         */
-
-        /*
-        temperature = 5.0f;
-        makeStar();
-        */
-
+        temperature = 10.0f;
         //measuringTime = System.Environment.TickCount;
 
-        temperature = 10.0f;
-        StartCoroutine(getGraph("Roger_Waters", 1));
-        
+        //StartCoroutine(getGraph("Roger_Waters", 1));
+        //the above was used for testing initially
+        /*
+        List<string> tmpList = new List<string>();
+        tmpList.Add("Roger Waters");
+        tmpList.Add("Hauskatze");
+        tmpList.Add("Pink Floyd");
+        StartCoroutine(communicator.requestPageviews(tmpList));
+        * these were for thesting pageview-functionality
+        */
+
     }
 
+    /*
+     * also a test function.
+     * makes a simple star-shaped graph
+     * /
     /*
     public void makeStar()
     {
@@ -104,63 +107,27 @@ public class GraphVisualizer : MonoBehaviour {
         setGraph(newGraph);
     }
     */
-    
+
     public void Update()
     {
-        /*
-        if (!communicator.getContent().Equals("") && printed == false)
+        if (drawnEdges != null)
         {
-            string[] content = communicator.getSectionedContent();
-            for (int i = 0; i < content.Length; i++)
+            if (drawnEdges.Count > 0)
             {
-                Debug.Log(content[i]);
-            }
-            printed = true;
-        }
-        */
-
-        /*
-        time += Time.deltaTime;
-        if (time > 0.05f && counter <10000)
-        {
-            if (drawn != null) { foreach (GameObject obj in drawn)
+                for (int i = 0; i < drawnNodes.Count; i++)
                 {
-                    Destroy(obj);
+                    Vector3 newPos = drawnNodes[i].transform.position;
+                    if(graph.getNodes().Count > i) graph.getNodes()[i].setPosition(newPos.x, newPos.y, newPos.z);
+                }
+                for (int i = 0; i < drawnEdges.Count; i++)
+                {
+                    LineRenderer line = drawnEdges[i].GetComponent<LineRenderer>();
+                    Graph.Edge curEdge = graph.getEdges()[i];
+                    line.SetPosition(0, new Vector3(curEdge.getFrom().getX(), curEdge.getFrom().getY(), curEdge.getFrom().getZ()));
+                    line.SetPosition(1, new Vector3(curEdge.getTo().getX(), curEdge.getTo().getY(), curEdge.getTo().getZ()));
                 }
             }
-            FruchtermanReingold();
-            drawn = drawGraph();
-            counter++;
-            time = 0;
         }
-        */
-
-        /*
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            waiting = true;
-            StartCoroutine(communicator.requestRandomArticle());
-        }
-        if (waiting)
-        {
-            if (communicator.isFinished()) { Debug.Log("Finished fetching random article: " + communicator.getContent()); waiting = false; }
-        }
-        */
-
-        
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Debug.Log("Pressed Return Key.");
-            Debug.Log(graph.getNodes().Count);
-            Debug.Log(System.Environment.TickCount - measuringTime);
-
-            FruchtermanReingold();
-            drawGraph();
-            Debug.Log("Graph drawn?");
-
-            oneAndDone = false;
-        }
-        
     }
 
     public void setGraph(Graph graph)
@@ -171,7 +138,7 @@ public class GraphVisualizer : MonoBehaviour {
             setBoundaries();
         }
         volume = DEFAULT_VOLUME;
-        optimalDistance = Mathf.Pow(volume/graph.getNodes().Count, (1.0f/3.0f));
+        optimalDistance = Mathf.Pow(volume / graph.getNodes().Count, (1.0f / 3.0f));
     }
 
     public void setGraph(Graph graph, float x, float y, float z)
@@ -179,7 +146,7 @@ public class GraphVisualizer : MonoBehaviour {
         this.graph = graph;
         setBoundaries(x, y, z);
         volume = boundaries.width * boundaries.length * boundaries.height; //get volume
-        optimalDistance = Mathf.Pow(volume/graph.getNodes().Count, (1.0f / 3.0f)); //get cube root of volume
+        optimalDistance = Mathf.Pow(volume / graph.getNodes().Count, (1.0f / 3.0f)); //get cube root of volume
     }
 
     public void setBoundaries(float l, float w, float h)
@@ -212,12 +179,15 @@ public class GraphVisualizer : MonoBehaviour {
     //IMPORTANT: check divisions! differences may be 0
     public void FruchtermanReingold()
     {
-        Debug.Log("Temperature: "+ temperature);
+
+        Debug.Log("Temperature: " + temperature);
+        int measured = System.Environment.TickCount;
 
         List<Graph.Node> nodes = graph.getNodes();
         List<Graph.Edge> edges = graph.getEdges();
 
         /*
+         * this is for testing of node validity
         foreach (Graph.Node n in nodes)
         {
             Debug.Log("Name of Node: " + n.getName());
@@ -292,7 +262,7 @@ public class GraphVisualizer : MonoBehaviour {
                     differenceZ * differenceZ);
 
                 float attractiveForce = getAttractiveForce(differenceLength);
-                    
+
                 //e.v.disp := e.v.disp - (difference / |difference|) * attractiveForce(|difference|)
                 edge.getFrom().setDisplacement(edge.getFrom().getDisplacementX() - (differenceX / differenceLength) * attractiveForce,
                     edge.getFrom().getDisplacementY() - (differenceY / differenceLength) * attractiveForce,
@@ -306,7 +276,7 @@ public class GraphVisualizer : MonoBehaviour {
 
             //last foreach, limit displacement by boundaries and temperature
 
-            int wasauchimmer = 0;    
+            int wasauchimmer = 0;
             foreach (Graph.Node node in nodes)
             {
 
@@ -314,13 +284,13 @@ public class GraphVisualizer : MonoBehaviour {
                 {
                     Debug.Log("If Pos or Disp NaN then position: " + node.getX() + ", " + node.getY() + ", " + node.getZ() + "\n" +
                         "Displacement: " + node.getDisplacementX() + ", " + node.getDisplacementY() + ", " + node.getDisplacementZ() + "\n" +
-                        "Temperatur: " + temperature + "\n" + 
+                        "Temperatur: " + temperature + "\n" +
                         "Knotenindex: " + wasauchimmer);
 
                     return;
                 }
-                float displacementLength = Mathf.Sqrt(Mathf.Pow(node.getDisplacementX(), 2.0f)+
-                    Mathf.Pow(node.getDisplacementY(), 2.0f)+
+                float displacementLength = Mathf.Sqrt(Mathf.Pow(node.getDisplacementX(), 2.0f) +
+                    Mathf.Pow(node.getDisplacementY(), 2.0f) +
                     Mathf.Pow(node.getDisplacementZ(), 2.0f));
 
                 /*Debug.Log("DisplacementLength: " + displacementLength);*/
@@ -340,24 +310,43 @@ public class GraphVisualizer : MonoBehaviour {
                 node.setPosition(newPosX,
                     newPosY,
                     newPosZ);
-                    
-                node.setPosition(Mathf.Min(boundaries.length/2.0f, Mathf.Max(-boundaries.length/2, node.getX())),
-                    Mathf.Min(boundaries.width/2.0f, Mathf.Max(-boundaries.width/2.0f, node.getY())),
-                    Mathf.Min(boundaries.height/2.0f, Mathf.Max(-boundaries.height/2.0f, node.getZ())));
-                wasauchimmer++;      
-            }
-                
-                temperature = cool(temperature);
-            
-        }
 
+                node.setPosition(Mathf.Min(boundaries.length / 2.0f, Mathf.Max(-boundaries.length / 2, node.getX())),
+                    Mathf.Min(boundaries.width / 2.0f, Mathf.Max(-boundaries.width / 2.0f, node.getY())),
+                    Mathf.Min(boundaries.height / 2.0f, Mathf.Max(-boundaries.height / 2.0f, node.getZ())));
+                wasauchimmer++;
+            }
+
+            temperature = cool(temperature);
+
+        }
+        Debug.Log("Measured Time for FR Algorithm: " + (System.Environment.TickCount - measured));
         Debug.Log("Reached end of Fruchterman Reingold");
     }
 
+    /*
+     * This method draws the graph given by graph of GraphVisualizer
+     */
     public void drawGraph()
     {
+        if (!(drawnNodes == null))
+        {
+            foreach (GameObject obj in drawnNodes)
+            {
+                Destroy(obj);
+            }
+        }
+        if (!(drawnEdges == null))
+        {
+            foreach (GameObject obj in drawnEdges)
+            {
+                Destroy(obj);
+            }
+        }
         drawnNodes = new List<GameObject>();
         drawnEdges = new List<GameObject>();
+
+        graphContainer.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
 
         //draw nodes
         List<Graph.Node> nodes = graph.getNodes();
@@ -366,35 +355,124 @@ public class GraphVisualizer : MonoBehaviour {
         {
             /*Debug.Log("Name: " + currentNode.getName()+", Position: x = "+currentNode.getX()+", y = "+currentNode.getY()+", z = "+currentNode.getZ());*/
             GameObject newBall = Instantiate(ball, new Vector3(currentNode.getX(), currentNode.getY(), currentNode.getZ()), Quaternion.identity);
+            newBall.name = currentNode.getName();
             /*Debug.Log("object: "+ newBall + ", transform: "+newBall.transform.position.ToString());*/
+            GameObject nameOfNode = new GameObject();
+            nameOfNode.transform.position = newBall.transform.position;
+            nameOfNode.transform.position += Vector3.up * 3;
+            nameOfNode.transform.parent = newBall.transform;
+
+            TextMesh txt = nameOfNode.AddComponent<TextMesh>();
+            txt.text = currentNode.getName();
+            MeshRenderer rend = nameOfNode.GetComponent<MeshRenderer>();
+            rend.material = mat;
+            txt.font = font;
             newBall.transform.parent = graphContainer.transform;
             drawnNodes.Add(newBall);
         }
-        
+
         foreach (Graph.Edge currentEdge in edges)
         {
             //maybe use GL.LINES instead...?
             GameObject lineObject = new GameObject();
             lineObject.AddComponent<LineRenderer>();
             LineRenderer line = lineObject.GetComponent<LineRenderer>();
+            line.material.color = Color.white;
             line.SetPosition(0, new Vector3(currentEdge.getFrom().getX(), currentEdge.getFrom().getY(), currentEdge.getFrom().getZ()));
-            line.SetPosition(0, new Vector3(currentEdge.getTo().getX(), currentEdge.getTo().getY(), currentEdge.getTo().getZ()));
-            
-            line.SetWidth(0.01f, 0.01f);
+            line.SetPosition(1, new Vector3(currentEdge.getTo().getX(), currentEdge.getTo().getY(), currentEdge.getTo().getZ()));
+
+            line.SetWidth(0.05f, 0.05f);
+
+            Vector3 edgeDir = new Vector3(currentEdge.getTo().getX() - currentEdge.getFrom().getX(), currentEdge.getTo().getY() - currentEdge.getFrom().getY(), currentEdge.getTo().getZ() - currentEdge.getFrom().getZ());
 
             lineObject.transform.parent = graphContainer.transform;
-
+            GameObject to = Instantiate(edgeTo, new Vector3(currentEdge.getTo().getX(), currentEdge.getTo().getY(), currentEdge.getTo().getZ()) - edgeDir.normalized, Quaternion.LookRotation(edgeDir));
+            if (currentEdge.getBothWays())
+            {
+                GameObject opposite = Instantiate(edgeTo, new Vector3(currentEdge.getFrom().getX(), currentEdge.getFrom().getY(), currentEdge.getFrom().getZ()) + edgeDir.normalized, Quaternion.LookRotation(-edgeDir));
+                opposite.transform.parent = lineObject.transform;
+            }
+            to.transform.parent = lineObject.transform;
             drawnEdges.Add(lineObject);
         }
     }
 
+    public IEnumerator getGraphFromNode(string title)
+    {
+        Debug.Log("reached getGraphFromNode");
+        yield return StartCoroutine(parseContentFromHTML(title));
+        Graph graph = new Graph();
+        Graph.Information info = new Graph.Information(title);
+        Graph.Node firstNode = new Graph.Node(info);
+        firstNode.setPosition(0.0f, 0.0f, 0.0f);
+        graph.addNode(firstNode);
+
+
+        //we assume that we don't go deeper here.
+        //another approach would be to go the same route as Coroutine "getGraph"
+        //we use this approach here because it's easier to implement and unterstand
+        //plus the depth is unlikely to go deeper
+        if (activeNode.getSubchapters() != null) {
+            foreach (Graph.Information.Chapter subChapter in activeNode.getSubchapters())
+            {
+
+                Graph.Information neighborInfo = new Graph.Information(subChapter.getTitle());
+                Graph.Node nextNode = new Graph.Node(neighborInfo);
+                nextNode.setPosition(Random.Range(-DEFAULT_WIDTH / 2, DEFAULT_WIDTH / 2), Random.Range(-DEFAULT_HEIGHT / 2, DEFAULT_HEIGHT / 2), Random.Range(-DEFAULT_LENGTH / 2, DEFAULT_LENGTH / 2));
+                Graph.Edge nextedge = new Graph.Edge(firstNode, nextNode);
+                graph.addNode(nextNode);
+                graph.addEdge(nextedge);
+
+                if (subChapter.getSubchapters() != null) {
+                    foreach (Graph.Information.Chapter subSubChapter in subChapter.getSubchapters())
+                    {
+                        Graph.Information subNeighborInfo = new Graph.Information(subSubChapter.getTitle());
+                        Graph.Node subNextNode = new Graph.Node(subNeighborInfo);
+                        subNextNode.setPosition(Random.Range(-DEFAULT_WIDTH / 2, DEFAULT_WIDTH / 2), Random.Range(-DEFAULT_HEIGHT / 2, DEFAULT_HEIGHT / 2), Random.Range(-DEFAULT_LENGTH / 2, DEFAULT_LENGTH / 2));
+                        Graph.Edge subNextedge = new Graph.Edge(nextNode, subNextNode);
+                        graph.addNode(subNextNode);
+                        graph.addEdge(subNextedge);
+                        if (subSubChapter.getSubchapters() != null)
+                        {
+                            foreach (Graph.Information.Chapter subSubSubChapter in subChapter.getSubchapters())
+                            {
+                                Graph.Information subSubNeighborInfo = new Graph.Information(subSubChapter.getTitle());
+                                Graph.Node subSubNextNode = new Graph.Node(subSubNeighborInfo);
+                                subSubNextNode.setPosition(Random.Range(-DEFAULT_WIDTH / 2, DEFAULT_WIDTH / 2), Random.Range(-DEFAULT_HEIGHT / 2, DEFAULT_HEIGHT / 2), Random.Range(-DEFAULT_LENGTH / 2, DEFAULT_LENGTH / 2));
+                                Graph.Edge subSubNextedge = new Graph.Edge(subNextNode, subSubNextNode);
+
+                                graph.addNode(subSubNextNode);
+                                graph.addEdge(subSubNextedge);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        setGraph(graph, 100.0f, 100.0f, 100.0f);
+        drawGraph();
+    }
+
+    public IEnumerator getRandomGraph(int hops)
+    {
+        yield return StartCoroutine(communicator.requestRandomArticle());
+        string title = communicator.getContent();
+        Debug.Log(title);
+        yield return StartCoroutine(getGraph(title, hops));
+    }
+
     /**
      * This method uses the title of a starting article and the amount of hops (distance from the start) to generate a graph
+     * It also uses maxNodes (saved in the GraphVisualizer structure), to limit maximum nodes
      * 
-     * !!!ATTENTION: THIS METHOD NEEDS REVISION AS IT HAS NOT BEEN TESTED OR CHECKED IF IT IS COMPLETE!!!
      */
-    IEnumerator getGraph(string startingNode, int hops)
+    public IEnumerator getGraph(string startingNode, int hops)
     {
+        Debug.Log("hops: " + hops);
+        Debug.Log("max nodes: " + maxNodes);
+        measuringTime = System.Environment.TickCount;
+
         isAcquiringGraph = true;
         //Note: We identify graph nodes by string because of easier comprehension
         //Note: Don't confuse the lists graph is taking care of with the list of strings of neighbors...
@@ -403,7 +481,7 @@ public class GraphVisualizer : MonoBehaviour {
         Graph.Node firstNode = new Graph.Node(info);
         firstNode.setPosition(0.0f, 0.0f, 0.0f);
         graph.addNode(firstNode); //this will keep track of ALL accumulated nodes and edges
-        
+
         List<Graph.Node> nodesToCheck = new List<Graph.Node>(); //these are nodes that are found in the neighborhood
         nodesToCheck.Add(firstNode); //this only keeps track of neighborhoods and deletes nodes that have been explored already
 
@@ -428,10 +506,11 @@ public class GraphVisualizer : MonoBehaviour {
                 for (int z = 0; z < tempNeighbors.Count; z++)
                 {
                     Debug.Log("currentNeighborToCheck: " + z);
+
                     //this for adds all neighbors of a node that is currently being explored to the list of nodes to be explored and the graph
                     Graph.Information neighborInfo = new Graph.Information(tempNeighbors[z]);
                     Graph.Node nextNode = new Graph.Node(neighborInfo);
-                    nextNode.setPosition(Random.Range(-DEFAULT_WIDTH/2, DEFAULT_WIDTH / 2), Random.Range(-DEFAULT_HEIGHT / 2, DEFAULT_HEIGHT / 2), Random.Range(-DEFAULT_LENGTH / 2, DEFAULT_LENGTH / 2));
+                    nextNode.setPosition(Random.Range(-DEFAULT_WIDTH / 2, DEFAULT_WIDTH / 2), Random.Range(-DEFAULT_HEIGHT / 2, DEFAULT_HEIGHT / 2), Random.Range(-DEFAULT_LENGTH / 2, DEFAULT_LENGTH / 2));
                     Graph.Edge nextedge = new Graph.Edge(nodesToCheck[j], nextNode);
                     if (!graph.getNodes().Exists(node => node.getName().Equals(tempNeighbors[z])))
                     {
@@ -440,7 +519,7 @@ public class GraphVisualizer : MonoBehaviour {
                     if (!graph.getEdges().Exists(edge => edge.getFrom().getName().Equals(nodesToCheck[j]) && edge.getTo().getName().Equals(tempNeighbors[z]))) //I don't want to talk about this
                     {
                         //above if should check if edge is already in list
-                        
+
                         int oppositeEdge = graph.getEdges().FindIndex(edge => edge.getFrom().getName().Equals(tempNeighbors[z]) && edge.getTo().getName().Equals(nodesToCheck[j]));
                         if (oppositeEdge >= 0)
                         {
@@ -460,13 +539,31 @@ public class GraphVisualizer : MonoBehaviour {
                         }
                     }
                     nodesToCheck.Add(nextNode); //this adds the currently looked at node to the list of nodes to explore
+                    if (graph.getNodes().Count >= maxNodes)
+                    {
+                        break;
+                    }
+                }
+                if (graph.getNodes().Count >= maxNodes)
+                {
+                    break;
                 }
             }
             nodesToCheck.RemoveRange(0, currentNodesToCheck); //see comment at start of for loop iterating j for more information on why this is necessary
+            if (graph.getNodes().Count >= maxNodes)
+            {
+                break;
+            }
         }
         setGraph(graph, 100.0f, 100.0f, 100.0f);
-        Debug.Log("Almost finished fetching data");
         isAcquiringGraph = false;
+        Debug.Log("Elapsed Time: " + (System.Environment.TickCount - measuringTime));
+        Debug.Log("Nodes in total: " + graph.getNodes().Count);
+    }
+
+    public void sectionedContent(string title)
+    {
+        StartCoroutine(communicator.requestSectionedContent(title));
     }
 
 
@@ -475,6 +572,8 @@ public class GraphVisualizer : MonoBehaviour {
     //To make things easier, when passing Information to the graph, add a number of pageviews to the Information
 
     //This method works in-place on the graph saved in this class
+
+    //it is NOT currently in use but assumes pageviews have been added to the nodes.
     public void downsizeGraph(int maxNodes)
     {
         if (graph.getNodes().Count <= maxNodes) { return; }
@@ -500,6 +599,16 @@ public class GraphVisualizer : MonoBehaviour {
         }
     }
 
+    //This method requests the HTML-content of a website from the communicator
+    public IEnumerator parseContentFromHTML(string title)
+    {
+        yield return StartCoroutine(communicator.requestContent("https://de.wikipedia.org/wiki/"+title));
+        string tmp = communicator.getContent();
+        //Debug.Log(tmp);
+        activeNode = communicator.parseHTML(tmp, title);
+
+    }
+
     public void setNumberOfIterations(int value)
     {
         if (value >= 0 && value <= 200)
@@ -512,8 +621,65 @@ public class GraphVisualizer : MonoBehaviour {
     //this implementation uses a different approach, check paper to see differences
     //volume is calculated as volume = w*l*h / |nodes|
     //optimalDistance is calculated as optimaleDistance = Mathf.pow(volume, (1.0/3.0))
+
+     /*
+      * NOTE: THIS METHOD HAS NOT BEEN IMPLEMENTED
+      * This is because it is, in a 3D graph, not as efficient as in a 2D graph
+      * Especially given the node limit (which is permanently set to 300 for good reasons)
+      * 
+      * a simple approach to implement would be to hash all graph nodes to a specific bucket in a list of buckets
+      * this would be decided by the position / gridlength
+      * meaning every node withing a certain range is hashed to the same bucket
+      */
     /*public void FruchtermanReingoldGridBased()
     {
 
     }*/
+
+    public int getHops()
+    {
+        return this.hops;
+    }
+    public int getMaxNodes()
+    {
+        return this.maxNodes;
+    }
+
+    public void setHops(int hops)
+    {
+        this.hops = hops;
+    }
+    public void setMaxNodes(int nodes)
+    {
+        this.maxNodes = nodes;
+    }
+
+    public string getGraphTitle()
+    {
+        if (graph != null)
+        {
+            if(graph.getNodes()[0] != null) return graph.getNodes()[0].getName();
+        }
+        return "";
+    }
+
+    public string[] getSectioned()
+    {
+        return communicator.getSectionedContent();
+    }
+
+    public void setSectioned()
+    {
+        sectioned = null;
+    }
+
+    public bool isSectionedDone()
+    {
+        if (communicator.isSectionedDone)
+        {
+            communicator.isSectionedDone = false;
+            return true;
+        }
+        return false;
+    }
 }

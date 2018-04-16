@@ -3,7 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - randomArticle
+  - draw
+  - hopsUp
+  - hopsDown
+  - nodesUp1
+  - nodesUp2
+  - nodesUp3
+  - nodesDown1
+  - nodesDown2
+  - nodesDown3
+  - hundert
+  - zehn
+  - eins
+  - hopCount
+  - menu
+  - node
+  - test
+  - showNode
+  - hideNode
+  - showStructure
+  - hideStructure
+  - drawNew
   layers:
   - Default
   - TransparentFX

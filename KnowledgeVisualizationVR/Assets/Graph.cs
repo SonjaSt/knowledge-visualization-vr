@@ -123,6 +123,11 @@ public class Graph {
         public float getDisplacementX() { return displacement.x; }
         public float getDisplacementY() { return displacement.y; }
         public float getDisplacementZ() { return displacement.z; }
+
+        public bool hasContent()
+        {
+            return this.information.hasContent();
+        }
     }
 
     public class Edge
@@ -151,19 +156,24 @@ public class Graph {
         {
             isBothWays = contrary;
         }
+
+        public bool getBothWays()
+        {
+            return isBothWays;
+        }
     }
 
     public class Information
     {
-        //STUB
         //use this class to save information from Wikipedia
         //this is ONLY used for information from Wikipedia!!
         private string name;
         private int pageviews;
-        private List<string> paragraphs; //this represents the paragraphs of an article
-        //private List<> pictures;
-        //private List<> videos;
-        //private List<> audio;
+        
+        private Chapter chapters; //this will save all internal chapters
+        //including the very first one, meaning content of <h1>
+        //this actually represents the highest level chapter
+
 
         public Information()
         {
@@ -189,6 +199,71 @@ public class Graph {
         public int getPageviews()
         {
             return pageviews;
+        }
+
+        public bool hasContent()
+        {
+            if (this.chapters != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public class Chapter
+        {
+            //A chapter needs a list of subchapters
+            //content representation as string, if the deepest level is reached
+            //and a list of media files, if there are any
+            private List<Chapter> subchapters;
+            private Chapter parent;
+            private string content;
+
+            private string title;
+
+            // It is possible to parse data from the HTML parser in Webhandler.cs
+            // to lists containing textures, videos etc.
+            // However this is not easy and requires a much more fleshed out parser.
+
+            // private List<string> pictures;
+
+            public Chapter(string name, Chapter parent)
+            {
+                title = name;
+                this.parent = parent;
+                subchapters = null;
+            }
+
+            public void setSubchapters(List<Chapter> subs)
+            {
+                this.subchapters = subs;
+            }
+            public void setContent(string cont)
+            {
+                this.content = cont;
+            }
+            public void setTitle(string t)
+            {
+                this.title = t;
+            }
+
+            public string getTitle()
+            {
+                return this.title;
+            }
+
+            public List<Chapter> getSubchapters()
+            {
+                return this.subchapters;
+            }
+            public string getContent()
+            {
+                return this.content;
+            }
+            public Chapter getParent()
+            {
+                return parent;
+            }
         }
     }
 }
